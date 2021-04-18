@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+<head>
+	<meta charset="utf-8" />
+	<title>Odliczanie dni do wydarzenia </title>
+	
+	
+	<script type="text/javascript" >
+
+	
+	function odliczanie()
+	{
+		var dzisiaj = new Date();
+		
+		var dzien = dzisiaj.getDate();
+		var miesiac = dzisiaj.getMonth()+1;
+		var rok = dzisiaj.getFullYear();
+		var milisekundy = dzisiaj.getTime();
+		var godzina = dzisiaj.getHours();
+		if (godzina<10) godzina = "0"+godzina;
+		
+		var minuta = dzisiaj.getMinutes();
+		if (minuta<10) minuta = "0"+minuta;
+		
+		var sekunda = dzisiaj.getSeconds();
+		if (sekunda<10) sekunda = "0"+sekunda;
+		
+		
+		var end = new Date("12/14/2021");
+		var endDzien = end.getDate();
+		var endMiesiac = end.getMonth()+1;
+		var endRok = end.getFullYear();
+		var milisekundy2 = end.getTime();
+		
+		var pozostalo = milisekundy2 - milisekundy; 
+		var dni = Math.floor(pozostalo/86400000); 
+		
+	
+		
+		document.getElementById("aktualnaData").innerHTML = "Aktualna data: "+dzien+"/"+miesiac+"/"+rok; 
+		document.getElementById("dataWydarzenia").innerHTML = "Data wydarzenia do którego obliczamy liczbę dni: "+endDzien+"/"+endMiesiac+"/"+endRok;
+		document.getElementById("dniDoWydarzenia").innerHTML ="Do wydarzenia pozostało: "+ dni;
+		document.getElementById("zegar").innerHTML = 
+		 dzien+"/"+miesiac+"/"+rok+" | "+godzina+":"+minuta+":"+sekunda;
+		 
+		 setTimeout("odliczanie()",1000);
+		 
+	}
+	
+	</script>
+
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	
+</head>
+<body>
+
+<div id="container">
+<div id="topBar">
+Ile dni pozostało do moich urodzin</div>
+
+    <div id="zegar"></div> 
+	
+	<br/>
+	
+	<div id="aktualnaData">...</div> 
+
+	<br/>
+	
+	<div id="dataWydarzenia">...</div>
+<br/>
+<br/>	
+	
+	<div id="dniDoWydarzenia">...</div> 
+	
+	<script type="text/javascript" >
+	odliczanie();
+</script>
+<div id="footer">
+:)
+</div>
+</div>
+</body>
+</html>
